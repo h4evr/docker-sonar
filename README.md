@@ -15,11 +15,13 @@ On this repo you'll find 2 images that provide the first 2 components:
 	* Database (sonar-mysql)
 	* WebServer (sonar-server).
 
+This repo is a fork of the tpires/docker-sonar repo. I just needed to modified it to add a proxy due to my network.
+
 ### Setup
 
 1. First you need to run the database image, but you need to give it a name so it can be later linked with the sonar-server:
 
-	`docker run -i -t -d -p 3306:3306 --name smysql tpires/sonar-mysql`
+	`docker run -i -t -d -p 3306:3306 --name smysql h4evr/sonar-mysql`
 
 	### Default user and password
 
@@ -27,6 +29,6 @@ On this repo you'll find 2 images that provide the first 2 components:
 
 2. Now you need to run the server and link it with the database. That link will be named "db".
 
-	`docker run -i -t -d --name sonar -p 9000:9000 --link smysql:db tpires/sonar-server`
+	`docker run -i -t -d --name sonar -p 9000:9000 --link smysql:db h4evr/sonar-server`
 
 You can now access to sonar-server by opening your browser to http://localhost:9000 .
